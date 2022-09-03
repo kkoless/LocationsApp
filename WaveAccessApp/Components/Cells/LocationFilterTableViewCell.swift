@@ -53,7 +53,9 @@ private extension LocationFilterTableViewCell {
             $0.top.bottom.equalToSuperview().inset(5)
         }
     }
-    
+}
+
+private extension LocationFilterTableViewCell {
     @objc func switchChanged() {
         delegate?.switchChanged(with: switchControl.isOn)
     }

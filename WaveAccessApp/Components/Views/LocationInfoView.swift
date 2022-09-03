@@ -64,17 +64,9 @@ final class LocationInfoView: UIView {
     }
     
     func configure(with model: LocationInfo) {
-        let locationCoordinate = CLLocationCoordinate2D(
-            latitude: model.coordinates.latitude,
-            longitude: model.coordinates.longitude
-        )
-        let region = MKCoordinateRegion(center: locationCoordinate,
-                                        latitudinalMeters: 2200,
-                                        longitudinalMeters: 2200)
-        mapView.setRegion(region, animated: true)
+        configureMap(with: model.coordinates)
         
         locationImage.image = UIImage(named: model.imageName)
-        
         layoutIfNeeded()
         locationImage.layer.cornerRadius = locationImage.frame.width / 2
         setShadow()
@@ -84,6 +76,20 @@ final class LocationInfoView: UIView {
         locationState.text = model.state
         
         starImage.isHidden = !model.isFavorite ? true : false
+    }
+}
+
+private extension LocationInfoView {
+    func configureMap(with coordinate: Coordinate) {
+        let locationCoordinate = CLLocationCoordinate2D(
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude
+        )
+        
+        let region = MKCoordinateRegion(center: locationCoordinate,
+                                        latitudinalMeters: 2200,
+                                        longitudinalMeters: 2200)
+        mapView.setRegion(region, animated: true)
     }
 }
 
@@ -116,7 +122,9 @@ private extension LocationInfoView {
             $0.size.equalTo(20)
         }
     }
-    
+}
+
+private extension LocationInfoView {
     func makeLabel(style: UIFont.TextStyle) -> UILabel {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: style)

@@ -15,14 +15,14 @@ final class LocationTableViewCell: UITableViewCell {
     weak var delegate: LocationTableViewCellDelegate?
     private var locationItem: LocationItem?
     
+    private lazy var locationTitle: UILabel = { UILabel() }()
+    
     private lazy var locationImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
         return imageView
     }()
-    
-    private lazy var locationTitle: UILabel = { UILabel() }()
     
     private lazy var starImage: UIImageView = {
         let imageView = UIImageView(image: UIImage(systemName: "star.fill"))
@@ -31,9 +31,7 @@ final class LocationTableViewCell: UITableViewCell {
     }()
     
     private lazy var titleStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [locationImage,
-                                                   locationTitle,
-                                                   starImage])
+        let stack = UIStackView(arrangedSubviews: [locationImage, locationTitle, starImage])
         stack.setCustomSpacing(10, after: locationImage)
         stack.setCustomSpacing(5, after: locationTitle)
         stack.alignment = .center
@@ -67,7 +65,6 @@ final class LocationTableViewCell: UITableViewCell {
     
     func configure(with model: LocationItem) {
         locationImage.image = UIImage(named: model.imageName)
-        
         layoutIfNeeded()
         locationImage.layer.cornerRadius = locationImage.frame.size.width / 2
         
