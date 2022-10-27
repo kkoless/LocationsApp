@@ -95,7 +95,7 @@ private extension LocationTableViewCell {
         contentView.backgroundColor = .white
         
         locationImage.snp.makeConstraints {
-            $0.size.equalTo(45)
+            $0.size.equalTo(45).priority(.init(floatLiteral: 999))
         }
         
         starImage.snp.makeConstraints {
