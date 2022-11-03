@@ -46,7 +46,6 @@ final class LocationFilterTableViewCell: UITableViewCell {
 private extension LocationFilterTableViewCell {
     func configureUI() {
         contentView.addSubview(horizontalStack)
-        contentView.backgroundColor = .white
         
         horizontalStack.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(16)
