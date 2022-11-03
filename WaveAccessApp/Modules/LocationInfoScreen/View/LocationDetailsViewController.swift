@@ -31,7 +31,7 @@ final class LocationInfoViewController: UIViewController {
 
 private extension LocationInfoViewController {
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "mainBackgroundColor")
         configureViews()
     }
     

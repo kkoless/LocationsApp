@@ -20,7 +20,6 @@ final class LocationListScreenViewController: UIViewController {
         
         tableView.register(LocationFilterTableViewCell.self, forCellReuseIdentifier: "LocationFilterTableViewCell")
         tableView.register(LocationTableViewCell.self, forCellReuseIdentifier: "LocationTableViewCell")
-        tableView.allowsMultipleSelection = false
         tableView.showsVerticalScrollIndicator = false
         
         return tableView
@@ -41,7 +40,7 @@ final class LocationListScreenViewController: UIViewController {
 
 private extension LocationListScreenViewController {
     func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(named: "mainBackgroundColor")
         configureTableView()
     }
     
